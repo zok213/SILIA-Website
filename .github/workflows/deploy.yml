@@ -50,9 +50,10 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/silia-react-app:${{ github.sha }} .
         docker push ${{ secrets.DOCKER_USERNAME }}/silia-react-app:${{ github.sha }}
 
-    # Step 7: Copy files to EC2 using SCP
-    - name: Copy files to EC2
+    # Step 7: Create the target directory and copy files to EC2 using SCP
+    - name: Create directory and copy files to EC2
       run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} "mkdir -p /home/ubuntu/app"
         scp -o StrictHostKeyChecking=no -r ./* ubuntu@${{ secrets.EC2_PUBLIC_IP }}:/home/ubuntu/app
 
     # Step 8: SSH into EC2 and pull the Docker image from Docker Hub
@@ -62,6 +63,6 @@ jobs:
           cd /home/ubuntu/app
           sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/silia-react-app:${{ github.sha }}
-          sudo docker-compose down || true
+          sudo docker-compose down || true  # Ignore error if no existing containers are running
           sudo docker-compose up --build -d
         EOF
