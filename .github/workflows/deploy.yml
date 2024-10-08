@@ -1,0 +1,68 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main  # Deploys on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 1: Set up SSH access to EC2
+    - name: Install SSH Key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+    # Step 2: Cache Node.js dependencies
+    - name: Cache node_modules
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    # Step 3: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # Step 4: Install dependencies
+    - name: Install dependencies
+      run: npm ci
+
+    # Step 5: Log in to Docker Hub
+    - name: Docker Hub Login
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    # Step 6: Build Docker image with caching and push to Docker Hub
+    - name: Build and Push Docker Image to Docker Hub
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/silia-react-app:${{ github.sha }} .
+        docker push ${{ secrets.DOCKER_USERNAME }}/silia-react-app:${{ github.sha }}
+
+    # Step 7: Create the target directory and copy files to EC2 using SCP
+    - name: Create directory and copy files to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} "mkdir -p /home/ubuntu/app"
+        scp -o StrictHostKeyChecking=no -r ./* ubuntu@${{ secrets.EC2_PUBLIC_IP }}:/home/ubuntu/app
+
+    # Step 8: SSH into EC2 and pull the Docker image from Docker Hub
+    - name: SSH and Deploy on EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
+          cd /home/ubuntu/app
+          sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/silia-react-app:${{ github.sha }}
+          sudo docker-compose down || true  # Ignore error if no existing containers are running
+          sudo docker-compose up --build -d
+        EOF
