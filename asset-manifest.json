@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.7f0c81a4.css",
-    "main.js": "/static/js/main.77269c26.js",
-    "static/js/453.258b012d.chunk.js": "/static/js/453.258b012d.chunk.js",
-    "static/media/xbot.glb": "/static/media/xbot.2cabbc59a4305ae3aa86.glb",
-    "static/media/ybot.glb": "/static/media/ybot.a2f7ba5b364cbcfdc39b.glb",
-    "static/media/home.png": "/static/media/home.de54749dd42dfc4d7caa.png",
-    "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
-    "static/media/ybot.png": "/static/media/ybot.589f71845d3d36089116.png",
-    "static/media/xbot.png": "/static/media/xbot.02b9f09431cb8a55bfae.png",
-    "static/media/logo.png": "/static/media/logo.d87c37b368e9f5239324.png",
-    "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
-    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
-    "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
-    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
-    "static/media/videos.png": "/static/media/videos.7672d4fe7fa107d31931.png",
-    "static/media/convert.png": "/static/media/convert.d6a6f8d10af95304032a.png",
-    "static/media/learn-sign.jpg": "/static/media/learn-sign.f97484cc2c54fa02b568.jpg",
-    "index.html": "/index.html",
-    "main.7f0c81a4.css.map": "/static/css/main.7f0c81a4.css.map",
-    "main.77269c26.js.map": "/static/js/main.77269c26.js.map",
-    "453.258b012d.chunk.js.map": "/static/js/453.258b012d.chunk.js.map"
+    "main.css": "/SILIA-Website/static/css/main.3b7ede0b.css",
+    "main.js": "/SILIA-Website/static/js/main.e9ce1375.js",
+    "static/js/453.258b012d.chunk.js": "/SILIA-Website/static/js/453.258b012d.chunk.js",
+    "static/media/xbot.glb": "/SILIA-Website/static/media/xbot.2cabbc59a4305ae3aa86.glb",
+    "static/media/ybot.glb": "/SILIA-Website/static/media/ybot.a2f7ba5b364cbcfdc39b.glb",
+    "static/media/home.png": "/SILIA-Website/static/media/home.de54749dd42dfc4d7caa.png",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/SILIA-Website/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/ybot.png": "/SILIA-Website/static/media/ybot.589f71845d3d36089116.png",
+    "static/media/xbot.png": "/SILIA-Website/static/media/xbot.02b9f09431cb8a55bfae.png",
+    "static/media/logo.png": "/SILIA-Website/static/media/logo.d87c37b368e9f5239324.png",
+    "static/media/fontawesome-webfont.eot": "/SILIA-Website/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/SILIA-Website/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/SILIA-Website/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/SILIA-Website/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/videos.png": "/SILIA-Website/static/media/videos.7672d4fe7fa107d31931.png",
+    "static/media/convert.png": "/SILIA-Website/static/media/convert.d6a6f8d10af95304032a.png",
+    "static/media/learn-sign.jpg": "/SILIA-Website/static/media/learn-sign.f97484cc2c54fa02b568.jpg",
+    "index.html": "/SILIA-Website/index.html",
+    "main.3b7ede0b.css.map": "/SILIA-Website/static/css/main.3b7ede0b.css.map",
+    "main.e9ce1375.js.map": "/SILIA-Website/static/js/main.e9ce1375.js.map",
+    "453.258b012d.chunk.js.map": "/SILIA-Website/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f0c81a4.css",
-    "static/js/main.77269c26.js"
+    "static/css/main.3b7ede0b.css",
+    "static/js/main.e9ce1375.js"
   ]
 }
